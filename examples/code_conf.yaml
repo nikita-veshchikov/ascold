@@ -1,0 +1,8 @@
+rand_list_of_addr:
+    - 0xF001
+    - 0xF002
+    - 0xF003
+mask_list_of_addr:
+    - [0xA000, a, 0]
+    - [0xA001, a, 1]
+    - [0xB000, b, 0]

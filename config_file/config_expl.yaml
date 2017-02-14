@@ -1,0 +1,38 @@
+rand_list_of_addr:
+    - 0x2343
+    - 0xa35b
+    - 0xff00
+rand_list_of_labels:
+    - label_1
+    - label_2
+    - label_3
+    - label_4
+rand_list_of_regs:
+    - r1
+    - r2
+    - r3
+    - r4
+    - r5
+mask_list_of_addr:
+    - [0x1122, a, 0]
+    - [0x1123, a, 1]
+    - [0x1124, a, 2]
+mask_list_of_labels:
+    - [var1, b, 0]
+    - [var1, b, 1]
+    - [var1, b, 2]
+mask_list_of_regs:
+    - [r3, c, 0]
+    - [r3, c, 1]
+    - [r3, c, 2]
+constants_list_of_addr:
+    - [constant_1_addr, 0x0012]
+    - [constant_2_addr, 0xfa10]
+constants_list_of_labels:
+    - [constant_1_label, 0xd002]
+    - [constant_2_label, 0xea10]
+constants_list_of_regs:
+    - [constant_r_1, 0xb001]
+    - [constant_r_2, 0x3d1f]
+rng:
+  - label_addr
