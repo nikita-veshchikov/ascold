@@ -32,12 +32,12 @@ class Device:
 		self.specialRegisters = {"X":(26,27), "Y":(28,29), "Z":(30,31)}
 		
 		# neighbour registers that were detected for AVR ATmega163
-		self.neighbours = { 0:[i for i in range(1,32)],1:[0],\
+		self.neighbours = { 0:[i for i in range(1,32)],1:[i for i in range(2,32)],\
 							2:[3],3:[2], 4:[5],5:[4], 6:[7],7:[6],\
 							8:[9],9:[8], 10:[11],11:[10], 12:[13],13:[12], 14:[15],15:[14],\
 							16:[17],17:[16], 18:[19],19:[18], 20:[21],21:[20], 22:[23],23:[22],\
 							24:[25],25:[24], 26:[27],27:[26], 28:[29],29:[28], 30:[31],31:[30]}
-		
+		self.neighbours[1].append(0)
 		self.bitStorage = TrackedValue()
 		self.memory = {} # dict of "adr" -> TrackedValue or "label" -> TrackedValue
 		
@@ -402,3 +402,24 @@ if __name__ == "__main__":
 	
 	dev2.runProgram()
 	print("------------ END ------------")
+	
+	print("-------- EXEC MASKING XOR --------")
+	
+	dev3 = Device()
+	program = [
+				Instruction("add", 1, 2),\
+				Instruction("add", 3, 4),\
+				Instruction("eor", 0, 1),\
+				Instruction("eor", 0, 3)]
+	
+	dev3.registers[0].setToRandom()
+	dev3.registers[1].loadMask(("a",0))
+	dev3.registers[2].loadMask(("b",1))
+	dev3.registers[3].loadMask(("a",1))
+	dev3.registers[4].loadMask(("b",0))
+	dev3.loadProgram(program, config)
+	
+	dev3.runProgram()
+	print("------------ END ------------")
+	
+	
